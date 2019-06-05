@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+	<style>
+		*{margin:0;padding:0}
+		#content{
+				width:500px;height:300px;
+				position:absolute;top:174px;right:-60px;
+				background:#fff;
+			}
+		table{
+			width:100%;table-layout:fixed;
+		}
+		th+th{font-size:12px;color:#666;}
+		h4{
+			color:#666;font-size:18px;
+			font-weight:bold;margin:12px 0;
+			text-align:left;
+		}
+		table a{
+			color:#d90009;text-decoration:none;
+		}
+		#phone,#upwd,#cpwd{
+			width:100%;height:40px;border:1px solid #666;
+			box-sizing:border-box;outline:0;
+			background:#fff;padding:5px 10px
+		}
+		#upwd{margin:10px 0;}
+		#line{border-top:1px solid red;padding-top:20px; }
+		#tongyi{margin:10px 2px;}
+		button{
+			width:100%;height:40px;
+			background:#66f;
+			box-sizing:border-box;outline:0
+		}
+		#login{/*注册页面背景*/
+			width:1000px;height:600px;margin:0 auto;
+			background:url(../img/login-bg.jpg);
+			background-repeat:no-repeat;position:relative;
+			background-position:5% 74%;
+		}
+		header{
+			width:1000px;margin:0 auto;
+			border-bottom:1px solid #000;
+			padding-top:30px;
+		}
+		footer{
+			width:1000px;margin:0 auto;
+			border-top:1px solid #000;
+			margin-top:50px;
+		}
+		footer>p{
+			font-size:12px;text-align:center;
+			margin-top:20px;
+		}
+		#footer_tu{
+			width:1000px;height:45px;margin:20px auto;
+			display:flex;justify-content:center;
+		}
+		#footer_tu1{
+			width:113px;height:42px;background-image:url(../img/spritesbgtop.png);background-position:0px -580px;margin:10px 10px;
+		}
+		#footer_tu2{
+			width:156px;height:45px;background-image:url(../img/spritesbgtop.png);background-position:0px -629px;margin:10px 10px;
+		}
+		#footer_tu3{
+			width:96px;height:42px;background-image:url(../img/spritesbgtop.png);background-position:0px -674px;margin:10px 10px;
+		}
+		#footer_tu4{
+			width:101px;height:42px;background-image:url(../img/spritesbgtop.png);background-position:-94px -674px;margin:10px 10px;
+		}
+	</style>
+  <title></title>
+ </head>
+ <body>
+	<!--注册页面-->
+	<header class="align-left">
+		<img src="../img/logo_new.jpg" alt="">
+	</header>
+	<div id="login">
+		<div id="content">
+			<table>
+				<tr>
+					<th><h4>注册新用户</h4></th>
+					<th align="right" >我已经注册，现在就<a href="#">登录</a></th>
+				</tr>
+			
+				<tr >
+					<td  colspan="2" id="line" >
+						<input type="text" id="phone"  onblur="shi5()" placeholder="请输入手机号">
+					</td>
+					<td>
+						<span id="phone_msg"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+							<input type="password" id="upwd" onblur="shi2()" placeholder="设定登录密码">
+						</td>
+						<td>
+								<span id="upwd_msg"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="password" id="cpwd" onblur="shi3()" placeholder="再次输入密码">
+					</td>
+					<td>	
+						<span id="cpwd_msg"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="checkbox" id="tongyi" value="ok">
+						<label for="tongyi">请阅读<a href="#">《VANCL凡客诚品服务条款》</a></label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button onclick="login()">立即注册</button>
+					</td>
+						<td>
+						<span id="xinxi_ok"></span>
+						</td>
+				</tr>	
+			</table>
+		</div>
+	</div>
+<!--页面底部  -->
+	<footer>
+		<p>Copyright 2007 - 2019 vancl.com All Rights Reserved 京ICP证100557号 京公网安备11011502002400号 出版物经营许可证新出发京批字第直110138号</p>
+		<div id="footer_tu">
+			<div id="footer_tu1"></div>
+			<div id="footer_tu2"></div>
+			<div id="footer_tu3"></div>
+			<div id="footer_tu4"></div>
+
+			
+		</div>
+	</footer>
+ </body>
+ <script>
+	function	login(){/*注册*/
+		if(upwd_msg.innerHTML=="密码ok"&&cpwd_msg.innerHTML=="OK"&&phone_msg.innerHTML=="该手机号可用"&&tongyi.value=="ok"){
+			var u_pwd=upwd.value;
+			var u_phone=phone.value;
+			
+			var xhr=new XMLHttpRequest();
+			console.log(xhr);
+			xhr.onreadystatechange=function(){
+				console.log(11111);
+				if(xhr.readyState==4&&xhr.status==200){
+					console.log(u_pwd);
+					var res=xhr.responseText;
+					alert(res);
+				}
+			}
+			xhr.open("post","http://127.0.0.1:8080/user/login",true);
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				var formdata="upwd="+u_pwd+"&phone="+u_phone;
+				console.log(formdata);
+				xhr.send(formdata);
+		}else{console.log(tongyi.value)
+			xinxi_ok.innerHTML="信息未按照要求填写"}
+	}	
+
+
+	function shi5(){/*验证手机号是否被注册*/
+		if(phone.value.length==11){
+			var u_phone=phone.value;
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					var res=xhr.responseText;
+					phone_msg.innerHTML=res;
+				}
+			}
+			xhr.open("get","http://127.0.0.1:8080/user/yan?phone="+u_phone,true);
+			xhr.send();
+		}else {
+			phone_msg.innerHTML="长度不合格"
+		}
+	}
+
+	function shi2(){
+		if(!upwd.value){
+			upwd_msg.innerHTML="密码不能为空"
+		}else {
+			upwd_msg.innerHTML="密码ok"
+		}
+	}
+
+	function shi3(){
+		if(cpwd.value!=upwd.value){
+			cpwd_msg.innerHTML="两次密码不一致"
+		}else{
+			cpwd_msg.innerHTML="OK"
+		}
+	}
+ </script>
+</html>
