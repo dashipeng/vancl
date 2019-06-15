@@ -1,0 +1,51 @@
+
+
+/*侧边固定定位*/
+.index_my_aside{
+    background:url(../img/baywindow.png) ;
+    width:75px;height:205px;
+    position:fixed;top:450px;
+    right:0px;
+
+}
+.index_my_aside>a:first-child{
+    display: block;
+    width:75px;height:78px;
+}
+.index_my_aside>a:nth-child(2){
+    display: block;
+    width:75px;height:73px;
+}
+.index_my_aside>a:last-child{
+    display: block;
+    width:75px;height:55px;
+}
+
+
+
+
+/*轮播图相关*/
+.carousel-control-prev,
+.carousel-control-next{
+    width:4%;height:20%;
+    background: #aaa;
+    border-radius:0.25rem;
+    top:40%;
+}
+.carousel-indicators li{
+    width:0.75rem;height:0.75rem;
+    background: #fff;
+    border-radius:50%;
+    margin:0 4px;
+}
+.carousel-indicators .active{
+    background-color:#0aa1ed;
+}
+.my_hong{
+    color:#A10000;
+    font:14px Arial;
+
+}
+.my_hong>span {
+    font:18px Arial;
+}
