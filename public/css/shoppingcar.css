@@ -1,0 +1,10 @@
+.welcome{
+    width:1000px;height:55px;
+    text-align:right;
+    padding-top:20px;
+    padding-bottom: 30px;
+    box-sizing:border-box;
+    z-index: 100;
+    margin:0 auto;
+    border-bottom: 1px solid #000;
+}

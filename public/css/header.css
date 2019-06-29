@@ -1,0 +1,52 @@
+header,section,footer{
+    width:1200px;
+    margin:0 auto;   
+}
+
+header .welcome{
+    width:1200px;height:40px;
+    background:#eee;
+    text-align:right;
+    padding:10px;
+    box-sizing:border-box;
+    z-index: 100;
+}
+
+
+header .search{
+    width:1200px;
+    text-align:right;
+    padding-top:30px        
+}
+header .search>input{
+    width:300px;height:21px;
+    border:1px solid #aaa;
+    outline:none;
+    margin:auto;
+}
+
+header #gwc{
+    width:100px;height:24px;
+    display:inline-block;
+    line-height:24px;
+    background-image:url(../img/vanclsprite.png);
+    background-position:240px -3px;
+    padding-left:5px;
+    text-align:center;
+}
+
+header #button{
+    width:36px;height:23px;
+    border:0;
+    position: relative;
+    top:6px;
+    background-image:url(../img/vanclsprite.png);
+    background-position:294px -3px;
+}
+header .search>p{
+    margin:20px 0;       
+}
+
+header #logo{
+    width:187px;height:48px;
+}
