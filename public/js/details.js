@@ -4,7 +4,7 @@ $(function(){
             type:"get"
         }).then(function(res){
             $(res).replaceAll("header");
-            $(`<link rel="stylesheet" href="../css/header.css">`).appendTo("head")
+            $(`<link rel="stylesheet" href="css/header.css">`).appendTo("head")
         })
 
         $.ajax({
@@ -13,7 +13,7 @@ $(function(){
         }).then(function(res){
             console.log(res)
             $(res).replaceAll("footer");
-            $(`<link rel="stylesheet" href="../css/footer.css">`).appendTo("head")
+            $(`<link rel="stylesheet" href="css/footer.css">`).appendTo("head")
         })
         
     var $lgImg=$("#lg-img");
